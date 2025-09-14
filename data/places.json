@@ -1,0 +1,82 @@
+[
+  {
+    "city": "Paris",
+    "name": "Eiffel Tower",
+    "category": "sights",
+    "lat": 48.8584,
+    "lng": 2.2945,
+    "rating": 4.7,
+    "price_level": 3,
+    "description": "Iconic iron tower with city views."
+  },
+  {
+    "city": "Paris",
+    "name": "Louvre Museum",
+    "category": "museum",
+    "lat": 48.8606,
+    "lng": 2.3376,
+    "rating": 4.8,
+    "price_level": 2,
+    "description": "Vast art museum home to the Mona Lisa."
+  },
+  {
+    "city": "Paris",
+    "name": "Le Marais Caf\u00e9s",
+    "category": "food",
+    "lat": 48.858,
+    "lng": 2.362,
+    "rating": 4.5,
+    "price_level": 2,
+    "description": "Trendy caf\u00e9s and bistros in Le Marais."
+  },
+  {
+    "city": "Paris",
+    "name": "Mus\u00e9e d'Orsay",
+    "category": "museum",
+    "lat": 48.8599,
+    "lng": 2.3266,
+    "rating": 4.7,
+    "price_level": 2,
+    "description": "Impressionist masterpieces."
+  },
+  {
+    "city": "Paris",
+    "name": "Tuileries Garden",
+    "category": "nature",
+    "lat": 48.8635,
+    "lng": 2.327,
+    "rating": 4.6,
+    "price_level": 0,
+    "description": "Formal gardens great for a stroll."
+  },
+  {
+    "city": "Tokyo",
+    "name": "Senso-ji Temple",
+    "category": "sights",
+    "lat": 35.7148,
+    "lng": 139.7967,
+    "rating": 4.7,
+    "price_level": 0,
+    "description": "Historic Buddhist temple in Asakusa."
+  },
+  {
+    "city": "Tokyo",
+    "name": "Shinjuku Gyoen National Garden",
+    "category": "nature",
+    "lat": 35.6852,
+    "lng": 139.71,
+    "rating": 4.7,
+    "price_level": 1,
+    "description": "Sprawling park with traditional gardens."
+  },
+  {
+    "city": "Tokyo",
+    "name": "Tsukiji Outer Market",
+    "category": "food",
+    "lat": 35.6655,
+    "lng": 139.7708,
+    "rating": 4.6,
+    "price_level": 2,
+    "description": "Street food and seafood stalls."
+  }
+]
