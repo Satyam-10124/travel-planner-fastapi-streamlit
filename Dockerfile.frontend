@@ -23,6 +23,11 @@ EXPOSE 8501
 # Streamlit config via env
 ENV STREAMLIT_SERVER_PORT=${PORT}
 ENV STREAMLIT_SERVER_ADDRESS=0.0.0.0
+ENV STREAMLIT_SERVER_HEADLESS=true
+
+# Default backend API base (can be overridden in Railway env settings)
+ENV API_BASE=https://trip-skshi-production.up.railway.app
+ENV BACKEND_URL=https://trip-skshi-production.up.railway.app
 
 # Start Streamlit bound to Railway's $PORT
 CMD ["sh", "-c", "streamlit run streamlit_app.py --server.port ${PORT} --server.address 0.0.0.0"]
