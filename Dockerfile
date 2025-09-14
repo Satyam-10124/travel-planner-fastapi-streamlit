@@ -11,7 +11,8 @@ RUN python -m pip install --upgrade pip && pip install -r requirements.txt
 
 COPY app ./app
 COPY data ./data
-COPY .env.sample .
+# Copy example env as .env for default settings (safe to override via Railway vars)
+COPY env.example .env
 
 EXPOSE 8000
 CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT}"]

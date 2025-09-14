@@ -8,6 +8,7 @@ import plotly.graph_objects as go
 from datetime import datetime, date, time
 import asyncio
 import httpx
+import os
 
 # Page config
 st.set_page_config(
@@ -18,7 +19,9 @@ st.set_page_config(
 )
 
 # API Base URL
-API_BASE = "http://localhost:8000"
+# Reads from environment if provided (e.g., on Railway for frontend service),
+# falls back to localhost for local development
+API_BASE = os.getenv("API_BASE", os.getenv("BACKEND_URL", "http://localhost:8000"))
 
 # Initialize session state
 if 'trips' not in st.session_state:

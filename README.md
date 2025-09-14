@@ -164,9 +164,53 @@ python run_app.py
 ```
 
 ### Cloud Deployment
-- **Railway**: Push to GitHub → Deploy from Repo
+- **Railway**: Push to GitHub → Deploy from Repo (see detailed steps below)
 - **Heroku**: Add `Procfile` and deploy
 - **Docker**: Use included `Dockerfile`
+
+### Deploying on Railway (Docker)
+
+Railway runs one port per service. This repo provides two Dockerfiles so you can deploy the backend and frontend as separate Railway services:
+
+- Backend (FastAPI) service uses the root `Dockerfile`
+- Frontend (Streamlit) service uses `Dockerfile.frontend`
+
+Follow these steps:
+
+1. Create a new Railway project and connect your GitHub repo.
+2. Add a new service → “Deploy from Repo” → select this repository.
+3. For the backend service:
+   - Build: Railway uses the root `Dockerfile` automatically
+   - Exposed port: Railway will set `PORT` (default 8000 in the image, but it will bind to `$PORT`)
+   - Health check: `/health`
+   - Environment variables (recommended):
+     - `DATABASE_URL` → Use Railway Postgres plugin (recommended) or stick with SQLite for testing
+     - `GOOGLE_PLACES_API_KEY` (optional)
+     - `OPENWEATHER_API_KEY` (optional)
+
+4. Add another service for the frontend:
+   - Build settings: set the Dockerfile path to `Dockerfile.frontend`
+   - The container will listen on `$PORT` and start Streamlit automatically
+   - Environment variables:
+     - `API_BASE` → set to your backend public URL, e.g. `https://<backend-service>.up.railway.app`
+
+Notes:
+
+- SQLite is stored on the container filesystem which is ephemeral on Railway. For production data, provision Railway Postgres and set `DATABASE_URL` accordingly.
+- CORS is already open in `app/main.py` via `CORSMiddleware`.
+- The frontend reads the backend base URL from `API_BASE` (or `BACKEND_URL`) environment variable, defaulting to `http://localhost:8000` for local dev.
+
+Example env variables:
+
+```env
+# Backend service
+DATABASE_URL=postgresql://USER:PASSWORD@HOST:PORT/DB
+GOOGLE_PLACES_API_KEY=your-google-places-api-key
+OPENWEATHER_API_KEY=your-openweather-api-key
+
+# Frontend service
+API_BASE=https://your-backend.up.railway.app
+```
 
 ## 🤝 Contributing
 
